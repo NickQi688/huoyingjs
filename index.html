@@ -1,0 +1,1300 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>货影工坊用户介绍</title>
+    <style>
+      :root {
+        --bg: #eef2ee;
+        --paper: #fbfbf6;
+        --ink: #13211f;
+        --muted: #4f625d;
+        --line: #d9e2dd;
+        --dark: #071110;
+        --dark-2: #0d1c1a;
+        --teal: #27d8cb;
+        --teal-soft: #dff9f5;
+        --gold: #b9914b;
+        --shadow: 0 24px 70px rgba(10, 28, 25, 0.16);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 34px 0;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(39, 216, 203, 0.16), transparent 26%),
+          radial-gradient(circle at 88% 8%, rgba(185, 145, 75, 0.13), transparent 22%),
+          var(--bg);
+        font-family: -apple-system, "SF Pro Text", "PingFang SC", "Noto Sans SC", sans-serif;
+        line-height: 1.72;
+        letter-spacing: 0;
+      }
+
+      .doc {
+        display: grid;
+        gap: 28px;
+      }
+
+      .page {
+        width: 1120px;
+        min-height: 780px;
+        margin: 0 auto;
+        padding: 50px 58px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 20px;
+        background: var(--paper);
+        box-shadow: var(--shadow);
+        break-after: page;
+      }
+
+      .page.dark {
+        color: #eefdf9;
+        background:
+          radial-gradient(circle at 82% 10%, rgba(39, 216, 203, 0.16), transparent 28%),
+          linear-gradient(135deg, #10231f 0%, #06100f 70%);
+      }
+
+      .page.dark::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+        background-size: 40px 40px;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.78), transparent 82%);
+      }
+
+      .page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .brand img {
+        width: 168px;
+        height: auto;
+      }
+
+      .badge {
+        width: fit-content;
+        display: inline-flex;
+        align-items: center;
+        padding: 7px 12px;
+        border-radius: 999px;
+        color: #032a28;
+        background: var(--teal);
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .dark .badge {
+        color: #06201d;
+        background: #63f4e9;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .dark .muted {
+        color: rgba(238, 253, 249, 0.68);
+      }
+
+      .cover {
+        display: grid;
+        grid-template-columns: 0.92fr 1.08fr;
+        gap: 54px;
+        align-items: center;
+      }
+
+      .cover .brand {
+        margin-bottom: 54px;
+      }
+
+      h1 {
+        margin-top: 22px;
+        font-size: 52px;
+        line-height: 1.08;
+        text-wrap: pretty;
+      }
+
+      .lead {
+        margin-top: 20px;
+        max-width: 550px;
+        color: var(--muted);
+        font-size: 19px;
+        font-weight: 560;
+        line-height: 1.7;
+      }
+
+      .dark .lead {
+        color: rgba(238, 253, 249, 0.8);
+        font-weight: 500;
+      }
+
+      .quick-points {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 34px;
+      }
+
+      .site-url {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        margin-top: 26px;
+        padding: 9px 16px 9px 12px;
+        border: 1px solid rgba(99, 244, 233, 0.24);
+        border-radius: 999px;
+        color: #dffdf9;
+        background: rgba(255, 255, 255, 0.07);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+        font-size: 16px;
+        font-weight: 850;
+        letter-spacing: 0.01em;
+      }
+
+      .site-url i {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #63f4e9;
+        box-shadow:
+          16px 0 0 rgba(99, 244, 233, 0.46),
+          32px 0 0 rgba(99, 244, 233, 0.24);
+      }
+
+      .quick-points div,
+      .problem,
+      .cap,
+      .adv,
+      .scene,
+      .case-note {
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .dark .quick-points div {
+        border-color: rgba(99, 244, 233, 0.18);
+        background: rgba(255, 255, 255, 0.055);
+      }
+
+      .quick-points div {
+        padding: 16px;
+      }
+
+      .quick-points strong {
+        display: block;
+        color: var(--teal);
+        font-size: 22px;
+      }
+
+      .quick-points span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 560;
+      }
+
+      .dark .quick-points span {
+        color: rgba(238, 253, 249, 0.68);
+        font-weight: 500;
+      }
+
+      .screen {
+        padding: 12px;
+        border-radius: 24px;
+        background: #ffffff;
+        border: 1px solid var(--line);
+        box-shadow: 0 26px 70px rgba(10, 28, 25, 0.14);
+      }
+
+      .dark .screen {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(99, 244, 233, 0.2);
+        box-shadow: 0 26px 70px rgba(0, 0, 0, 0.24);
+      }
+
+      .screen img {
+        display: block;
+        width: 100%;
+        border-radius: 15px;
+      }
+
+      .caption {
+        margin-top: 11px;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 560;
+        text-align: center;
+      }
+
+      .dark .caption {
+        color: rgba(238, 253, 249, 0.62);
+        font-weight: 500;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 30px;
+        margin-bottom: 32px;
+      }
+
+      .section-head h2 {
+        max-width: 690px;
+        margin-top: 14px;
+        font-size: 40px;
+        line-height: 1.18;
+        text-wrap: pretty;
+      }
+
+      .section-head p {
+        max-width: 390px;
+        color: var(--muted);
+        font-size: 17px;
+        font-weight: 540;
+      }
+
+      .dark .section-head p {
+        color: rgba(238, 253, 249, 0.68);
+      }
+
+      .workflow-map {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .flow-card {
+        min-height: 170px;
+        padding: 18px;
+        position: relative;
+        border: 1px solid #cbd8d2;
+        border-radius: 22px;
+        background: #ffffff;
+      }
+
+      .flow-card::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -18px;
+        width: 24px;
+        height: 2px;
+        background: #b8c7c1;
+      }
+
+      .flow-card:last-child::after {
+        content: none;
+      }
+
+      .flow-card b {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        color: #07201e;
+        background: var(--teal);
+        font-size: 14px;
+      }
+
+      .flow-card strong {
+        display: block;
+        margin-top: 18px;
+        font-size: 19px;
+        line-height: 1.3;
+      }
+
+      .flow-card span {
+        display: block;
+        margin-top: 9px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .problem-row {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 34px;
+      }
+
+      .problem {
+        padding: 18px;
+      }
+
+      .problem strong,
+      .cap strong,
+      .adv strong,
+      .scene strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+      }
+
+      .problem p,
+      .cap p,
+      .adv p,
+      .scene p,
+      .case-note p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .case-layout {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 26px;
+        align-items: stretch;
+      }
+
+      .case-left {
+        display: grid;
+        gap: 14px;
+      }
+
+      .case-note {
+        padding: 18px;
+      }
+
+      .case-note strong {
+        display: block;
+        margin-bottom: 7px;
+        color: var(--teal);
+        font-size: 18px;
+      }
+
+      .storyboard-frame {
+        padding: 10px;
+        border-radius: 24px;
+        background: #0a1312;
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+      }
+
+      .storyboard-frame img {
+        display: block;
+        width: 100%;
+        max-height: 535px;
+        object-fit: contain;
+        border-radius: 14px;
+      }
+
+      .result-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .result-card {
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: #ffffff;
+      }
+
+      .result-card img {
+        display: block;
+        width: 100%;
+        height: 190px;
+        object-fit: cover;
+        border-radius: 14px;
+      }
+
+      .result-card strong {
+        display: block;
+        margin-top: 10px;
+        font-size: 16px;
+      }
+
+      .real-proof-grid {
+        display: grid;
+        grid-template-columns: 0.96fr 1.04fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .real-proof-grid .real-screen {
+        height: 505px;
+      }
+
+      .real-screen {
+        overflow: hidden;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #0a1312;
+        box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+      }
+
+      .real-screen img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        min-height: 360px;
+        object-fit: cover;
+        object-position: center;
+        border-radius: 16px;
+      }
+
+      .real-screen.contain img {
+        object-fit: contain;
+        background: #ffffff;
+      }
+
+      .case-summary {
+        display: grid;
+        gap: 14px;
+      }
+
+      .case-summary .case-note {
+        min-height: 104px;
+        padding: 16px;
+      }
+
+      .mini-metrics {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .mini-metric {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #ffffff;
+      }
+
+      .mini-metric b {
+        display: block;
+        color: var(--teal);
+        font-size: 22px;
+        line-height: 1.1;
+      }
+
+      .mini-metric span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .cap-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .cap {
+        min-height: 168px;
+        padding: 20px;
+      }
+
+      .cap em {
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 18px;
+        border-radius: 50%;
+        color: #06302c;
+        background: var(--teal-soft);
+        font-style: normal;
+        font-weight: 900;
+      }
+
+      .two-col {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        margin-top: 28px;
+      }
+
+      .light-screen {
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        background: #ffffff;
+      }
+
+      .light-screen img {
+        display: block;
+        width: 100%;
+        border-radius: 14px;
+      }
+
+      .real-shot-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .shot-card {
+        display: grid;
+        gap: 10px;
+      }
+
+      .shot-card .light-screen {
+        height: 255px;
+        overflow: hidden;
+      }
+
+      .shot-card .light-screen img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .shot-card strong {
+        display: block;
+        font-size: 17px;
+      }
+
+      .shot-card p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .tech-layout {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 24px;
+        align-items: stretch;
+      }
+
+      .tech-grid {
+        display: grid;
+        gap: 14px;
+      }
+
+      .tech-item {
+        padding: 18px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: #ffffff;
+      }
+
+      .tech-item strong {
+        display: block;
+        margin-bottom: 7px;
+        font-size: 18px;
+      }
+
+      .tech-item p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .director-board {
+        height: 500px;
+      }
+
+      .director-board img {
+        object-fit: cover;
+        object-position: center 52%;
+        background: #071110;
+      }
+
+      .asset-showcase {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .asset-showcase-card {
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: 0 18px 42px rgba(10, 28, 25, 0.1);
+      }
+
+      .asset-showcase-card .real-screen {
+        height: 326px;
+        padding: 0;
+        border-radius: 18px;
+        border-color: #dfe8e3;
+        background: #ffffff;
+        box-shadow: none;
+      }
+
+      .asset-showcase-card .real-screen img {
+        min-height: 0;
+        border-radius: 18px;
+        object-fit: cover;
+        object-position: center top;
+      }
+
+      .asset-showcase-card strong {
+        display: block;
+        margin-top: 13px;
+        font-size: 19px;
+        line-height: 1.32;
+      }
+
+      .asset-showcase-card p {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 540;
+        line-height: 1.62;
+      }
+
+      .asset-benefit-row {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .asset-benefit {
+        padding: 15px 16px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #ffffff;
+      }
+
+      .asset-benefit strong {
+        display: block;
+        color: var(--teal);
+        font-size: 16px;
+      }
+
+      .asset-benefit p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .result-copy-list {
+        display: grid;
+        gap: 13px;
+      }
+
+      .copy-box {
+        padding: 17px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: #ffffff;
+      }
+
+      .copy-box strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 17px;
+      }
+
+      .copy-box p {
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .case-video-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .case-video-card {
+        padding: 12px 12px 16px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #ffffff;
+        box-shadow: 0 18px 42px rgba(10, 28, 25, 0.1);
+      }
+
+      .phone-video {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 9 / 16;
+        border-radius: 20px;
+        background: #08110f;
+      }
+
+      .phone-video::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 82px;
+        pointer-events: none;
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.48));
+      }
+
+      .phone-video video {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        accent-color: var(--teal);
+      }
+
+      .video-pill {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        padding: 5px 9px;
+        border-radius: 999px;
+        color: #ecfffb;
+        background: rgba(7, 17, 16, 0.74);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .case-video-card strong {
+        display: block;
+        margin-top: 13px;
+        font-size: 16px;
+        line-height: 1.28;
+      }
+
+      .tip-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .tip-panel {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        gap: 10px;
+        padding: 15px;
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        background: #ffffff;
+      }
+
+      .tip-panel h3 {
+        font-size: 20px;
+        line-height: 1.25;
+      }
+
+      .tip-panel p {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 540;
+      }
+
+      .tip-images {
+        display: grid;
+        grid-template-columns: 0.78fr 1.22fr;
+        gap: 10px;
+        height: 285px;
+      }
+
+      .tip-images.figure-model {
+        grid-template-columns: 188px 1fr;
+        align-items: center;
+      }
+
+      .tip-img-box {
+        overflow: hidden;
+        border-radius: 18px;
+        background: #f4f7f5;
+        border: 1px solid #e2e8e4;
+      }
+
+      .tip-img-box.portrait-square {
+        width: 188px;
+        height: 188px;
+        border-width: 2px;
+        border-color: #dce7e1;
+      }
+
+      .tip-img-box.reference-frame {
+        border-width: 2px;
+        border-color: #c7d9d1;
+        background: #ffffff;
+      }
+
+      .tip-img-box img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .tip-img-box.contain img {
+        object-fit: contain;
+      }
+
+      .tip-img-box.portrait-square img {
+        object-position: center 18%;
+      }
+
+      .tip-img-box.reference-frame img {
+        object-fit: contain;
+        background: #ffffff;
+      }
+
+      .prompt-box {
+        padding: 11px 12px;
+        border-radius: 16px;
+        color: #27413c;
+        background: #eef8f5;
+        font-size: 11px;
+        font-weight: 650;
+        line-height: 1.45;
+      }
+
+      .prompt-box b {
+        color: #0c8f85;
+      }
+
+      .adv-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .two-col .adv-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .adv {
+        padding: 18px;
+        min-height: 150px;
+      }
+
+      .scene-row {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .scene {
+        padding: 14px;
+        min-height: 98px;
+      }
+
+      .scene strong {
+        color: var(--teal);
+      }
+
+      .closing {
+        margin-top: 16px;
+        padding: 18px 24px;
+        border-radius: 24px;
+        color: #eefdf9;
+        background: linear-gradient(135deg, #0a2420, #0f1716);
+      }
+
+      .closing strong {
+        display: block;
+        font-size: 22px;
+        line-height: 1.38;
+      }
+
+      .workflow-summary {
+        margin-top: 26px;
+        padding: 17px 24px;
+        border-radius: 24px;
+        color: #eefdf9;
+        background: linear-gradient(135deg, #0a2420, #0f1716);
+        box-shadow: 0 18px 42px rgba(10, 28, 25, 0.12);
+      }
+
+      .workflow-summary strong {
+        display: block;
+        font-size: 19px;
+        line-height: 1.35;
+        white-space: nowrap;
+      }
+
+      .footer {
+        position: absolute;
+        left: 58px;
+        right: 58px;
+        bottom: 26px;
+        display: flex;
+        justify-content: space-between;
+        color: rgba(19, 33, 31, 0.48);
+        font-size: 12px;
+      }
+
+      .dark .footer {
+        color: rgba(238, 253, 249, 0.46);
+      }
+
+      [data-screen-label="05 Advantages"] .section-head {
+        margin-bottom: 24px;
+      }
+
+      [data-screen-label="05 Advantages"] .adv {
+        min-height: 128px;
+      }
+
+      [data-screen-label="05 Advantages"] .scene-row {
+        margin-top: 12px;
+      }
+
+      [data-screen-label="05 Advantages"] .scene {
+        min-height: 82px;
+        padding: 12px;
+      }
+
+      [data-screen-label="05 Advantages"] .closing {
+        margin-top: 12px;
+        padding: 15px 22px;
+      }
+
+      [data-screen-label="05 Advantages"] .closing strong {
+        font-size: 20px;
+        line-height: 1.34;
+      }
+
+      [data-screen-label="06 Tips"] .section-head,
+      [data-screen-label="07 Assets Result"] .section-head,
+      [data-screen-label="08 Video Cases"] .section-head {
+        margin-bottom: 22px;
+      }
+
+      [data-screen-label="08 Video Cases"] .section-head {
+        display: block;
+      }
+
+      [data-screen-label="08 Video Cases"] .section-head h2 {
+        max-width: none;
+      }
+
+      [data-screen-label="06 Tips"] {
+        padding-top: 42px;
+      }
+
+      [data-screen-label="06 Tips"] .section-head {
+        margin-bottom: 16px;
+      }
+
+      [data-screen-label="03 Real Case"] .section-head {
+        margin-bottom: 22px;
+      }
+
+      [data-screen-label="03 Real Case"] .real-screen {
+        background: #ffffff;
+        border-color: #dfe8e3;
+        box-shadow: 0 18px 42px rgba(10, 28, 25, 0.12);
+      }
+
+      [data-screen-label="03 Real Case"] .section-head h2,
+      [data-screen-label="05 Advantages"] .section-head h2,
+      [data-screen-label="06 Tips"] .section-head h2,
+      [data-screen-label="07 Assets Result"] .section-head h2,
+      [data-screen-label="08 Video Cases"] .section-head h2 {
+        font-size: 38px;
+      }
+
+      [data-screen-label="06 Tips"] .section-head h2 {
+        font-size: 34px;
+      }
+
+      [data-screen-label="06 Tips"] .section-head p {
+        font-size: 16px;
+        line-height: 1.62;
+      }
+
+      [data-screen-label="06 Tips"] .footer,
+      [data-screen-label="07 Assets Result"] .footer,
+      [data-screen-label="08 Video Cases"] .footer {
+        display: none;
+      }
+
+      @page {
+        size: A4 landscape;
+        margin: 0;
+      }
+
+      @media print {
+        body {
+          padding: 0;
+          background: var(--bg);
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .doc {
+          gap: 0;
+        }
+
+        .page {
+          width: 297mm;
+          height: 210mm;
+          min-height: 210mm;
+          margin: 0;
+          border-radius: 0;
+          box-shadow: none;
+          break-after: page;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="doc">
+      <section class="page dark cover" data-screen-label="01 Cover">
+        <div>
+          <div class="brand"><img src="assets/logo-huoyinggongfang.png" alt="货影工坊"></div>
+          <span class="badge">AI 带货短视频创作工作流</span>
+          <h1>从商品素材到分镜、成片，一套流程跑完。</h1>
+          <p class="lead">货影工坊面向电商、品牌和内容团队，把商品图、模特图、参考视频、创意、脚本、分镜和发布文案串成一条清晰链路。商品和模特确定后，可以围绕同一套素材批量稳定生成，减少反复抽卡。</p>
+          <div class="site-url"><i></i><span>www.huoying.xyz</span></div>
+          <div class="quick-points">
+            <div><strong>原创</strong><span>从商品图和想法开始</span></div>
+            <div><strong>复刻</strong><span>学习爆款节奏和结构</span></div>
+            <div><strong>导入</strong><span>已有脚本也能中途接入</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="screen"><img src="assets/home.png" alt="货影工坊首页创作界面"></div>
+          <p class="caption">首页：商品图、模特图、爆款视频和创作想法统一进入工作流。</p>
+        </div>
+        <div class="footer"><span>货影工坊用户介绍</span><span>01</span></div>
+      </section>
+
+      <section class="page" data-screen-label="02 Workflow">
+        <div class="section-head">
+          <div>
+            <span class="badge">流程图</span>
+            <h2>把“生成视频”拆成 5 个可检查的节点。</h2>
+          </div>
+          <p>直接一句话生成视频容易跑偏。货影工坊先让团队确认商品、模特、创意、脚本和分镜，再进入视频生成，争取一次生成更可用的带货视频。</p>
+        </div>
+
+        <div class="workflow-map">
+          <div class="flow-card"><b>1</b><strong>素材输入</strong><span>商品图、模特图、爆款视频、商品档案</span></div>
+          <div class="flow-card"><b>2</b><strong>创意方向</strong><span>围绕商品与场景生成多个可选角度</span></div>
+          <div class="flow-card"><b>3</b><strong>脚本确认</strong><span>检查卖点、节奏和表达，可继续修改</span></div>
+          <div class="flow-card"><b>4</b><strong>分镜确认</strong><span>先看商品、人物和镜头是否跑偏</span></div>
+          <div class="flow-card"><b>5</b><strong>视频结果</strong><span>确认分镜后生成成片和发布参考文案</span></div>
+        </div>
+
+        <div class="problem-row">
+          <div class="problem"><strong>商品不稳定</strong><p>外观、颜色、材质在镜头切换中容易变化。</p></div>
+          <div class="problem"><strong>人物不统一</strong><p>模特形象前后镜头不一致，影响真实感。</p></div>
+          <div class="problem"><strong>失败难定位</strong><p>不知道问题出在创意、脚本、分镜还是视频生成。</p></div>
+          <div class="problem"><strong>反复抽卡</strong><p>缺少检查点时，只能不断重试，成本和时间都不可控。</p></div>
+        </div>
+
+        <div class="workflow-summary"><strong>先固定商品和模特，再经过脚本、分镜、视频逐步检查，尽量把 AI 带货视频从“抽卡”变成可复用的生产流程。</strong></div>
+
+        <div class="footer"><span>先检查，再生成</span><span>02</span></div>
+      </section>
+
+      <section class="page" data-screen-label="03 Real Case">
+        <div class="section-head">
+          <div>
+            <span class="badge">真实案例</span>
+            <h2>用真实分镜图，让用户先看懂视频会怎么走。</h2>
+          </div>
+          <p>下面是“中高考祝福礼”案例的分镜图：用户能提前看到商品露出、人物动作、场景变化和最终节奏。</p>
+        </div>
+
+        <div class="real-proof-grid">
+          <div class="real-screen contain">
+            <img src="assets/case-storyboard-new.jpg" alt="粽子挂件 9 宫格分镜案例">
+          </div>
+          <div class="case-summary">
+            <div class="case-note"><strong>案例目标</strong><p>用校园夜晚和便利店场景，展示“一举高粽”挂件作为中高考祝福礼的情绪价值。</p></div>
+            <div class="case-note"><strong>分镜价值</strong><p>先把人物、商品、近景特写和收束定格拆出来，再进入视频生成。</p></div>
+            <div class="mini-metrics">
+              <div class="mini-metric"><b>9 镜</b><span>拆成可检查的镜头节点</span></div>
+              <div class="mini-metric"><b>祝福礼</b><span>情绪场景更容易被理解</span></div>
+              <div class="mini-metric"><b>9:16</b><span>竖屏画幅，适配手机信息流</span></div>
+              <div class="mini-metric"><b>商品锁定</b><span>每个镜头都围绕用户商品展开</span></div>
+            </div>
+            <div class="case-note"><strong>用户能确认什么</strong><p>商品是否清晰、人物是否统一、镜头是否顺、故事是否能自然带出卖点。</p></div>
+          </div>
+        </div>
+
+        <div class="footer"><span>案例：分镜图让视频结果更可预期</span><span>03</span></div>
+      </section>
+
+      <section class="page" data-screen-label="04 Capabilities">
+        <div class="section-head">
+          <div>
+            <span class="badge">核心能力</span>
+            <h2>三种入口，适配不同创作状态。</h2>
+          </div>
+          <p>从零开始、复刻爆款、已有脚本，都可以进入同一套分镜和视频生成流程。</p>
+        </div>
+
+        <div class="cap-grid">
+          <div class="cap"><em>01</em><strong>原创带货</strong><p>上传商品图和创作想法，平台先生成创意方向，再继续生成脚本、分镜和视频。</p></div>
+          <div class="cap"><em>02</em><strong>爆款复刻</strong><p>拆解参考视频的节奏、开头钩子和镜头推进方式，再替换成自己的商品和卖点。</p></div>
+          <div class="cap"><em>03</em><strong>脚本导入</strong><p>已有拍摄脚本或分镜方案时，可以跳过创意生成，从中间环节直接进入。</p></div>
+        </div>
+
+        <div class="real-shot-grid" style="margin-top:26px;">
+          <div class="shot-card">
+            <div class="light-screen"><img src="assets/real-script-import.png" alt="脚本导入后的脚本确认界面"></div>
+            <div><strong>脚本导入也能继续往下走</strong><p>已有方案可以直接进入脚本确认，不必从创意重新开始。</p></div>
+          </div>
+          <div class="shot-card">
+            <div class="light-screen"><img src="assets/real-storyboard-confirm.png" alt="分镜确认真实界面"></div>
+            <div><strong>分镜确认后再生成视频</strong><p>先看画面和镜头说明，再决定是否进入成片阶段。</p></div>
+          </div>
+        </div>
+
+        <div class="footer"><span>原创、复刻、导入，统一进入可控流程</span><span>04</span></div>
+      </section>
+
+      <section class="page" data-screen-label="05 Advantages">
+        <div class="section-head">
+          <div>
+            <span class="badge">专业能力</span>
+            <h2>分镜提示词不是一句描述，而是一套导演规则。</h2>
+          </div>
+          <p>平台会把商品、模特、故事、镜头和平台风格拆成结构化要求，让模型更容易理解“该拍什么”。</p>
+        </div>
+
+        <div class="tech-layout">
+          <div class="tech-grid">
+            <div class="tech-item"><strong>镜头结构约束</strong><p>明确镜头数量、时长区间、画面内容、运镜方式和转场节奏，减少“画面散”的问题。</p></div>
+            <div class="tech-item"><strong>商品一致性约束</strong><p>反复强调颜色、材质、标签、形态和核心识别点，尽量避免生成新商品。</p></div>
+            <div class="tech-item"><strong>人物一致性约束</strong><p>有模特图时会把人物形象作为参考，尽量保持脸型、发型、气质和服装风格连续。</p></div>
+            <div class="tech-item"><strong>平台表达适配</strong><p>根据 TikTok、小红书、抖音等内容语感，控制开头钩子、情绪推进和收口方式。</p></div>
+          </div>
+          <div class="real-screen director-board">
+            <img src="assets/real-storyboard-confirm.png" alt="真实导演分镜提示词和分镜确认界面">
+          </div>
+        </div>
+
+        <div class="footer"><span>专业提示词，让模型更像在按拍摄方案执行</span><span>05</span></div>
+      </section>
+
+      <section class="page" data-screen-label="06 Tips">
+        <div class="section-head">
+          <div>
+            <span class="badge">小技巧</span>
+            <h2>多给模型一张“档案图”，稳定性会明显更好。</h2>
+          </div>
+          <p>上传商品图和模特图时，可以额外准备商品拆解图、模特特写图，让后续分镜和视频更容易保持一致。</p>
+        </div>
+
+        <div class="tip-layout">
+          <article class="tip-panel">
+            <div>
+              <h3>商品：主图 + 拆解图</h3>
+              <p>主图负责识别商品，拆解图负责补充角度、结构、材质、LOGO 和功能细节。</p>
+            </div>
+            <div class="tip-images">
+              <div class="tip-img-box contain"><img src="assets/tip-product-source.png" alt="商品主图"></div>
+              <div class="tip-img-box reference-frame"><img src="assets/tip-product-breakdown.png" alt="商品拆解图"></div>
+            </div>
+            <div class="prompt-box"><b>可复制提示词：</b>根据上传产品图制作产品多角度拆解展示图，包含正面、背面、侧面、45 度角、顶部/底部细节、材质纹理、LOGO、工艺和功能细节。背景干净，杂志级产品档案风格，商品结构不能被改写。</div>
+          </article>
+
+          <article class="tip-panel">
+            <div>
+              <h3>模特：场景图 + 特征参考图</h3>
+              <p>场景图负责人物氛围，特征参考图负责锁定脸部、发型、体态和服装细节。</p>
+            </div>
+            <div class="tip-images figure-model">
+              <div class="tip-img-box portrait-square"><img src="assets/tip-model-source.jpg" alt="模特场景图"></div>
+              <div class="tip-img-box reference-frame"><img src="assets/tip-model-reference.jpg" alt="模特特征参考图"></div>
+            </div>
+            <div class="prompt-box"><b>可复制提示词：</b>生成图中人物的特征参考图：上半部分展示正面、45 度侧脸、90 度侧脸特写；下半部分展示全身正面、侧面、背面三视图。白色摄影棚背景，高清写实，柔和打光，杂志级人物档案排版。</div>
+          </article>
+        </div>
+
+        <div class="footer"><span>额外参考图越清楚，商品和人物越不容易跑偏</span><span>06</span></div>
+      </section>
+
+      <section class="page" data-screen-label="07 Assets Result">
+        <div class="section-head">
+          <div>
+            <span class="badge">资产与结果</span>
+            <h2>素材能复用，结果能直接进入发布准备。</h2>
+          </div>
+          <p>资产库沉淀商品和模特，视频结果页提供成片预览和发布文案，方便团队继续测试和复用。</p>
+        </div>
+
+        <div class="asset-showcase">
+          <article class="asset-showcase-card">
+            <div class="real-screen"><img src="assets/real-asset-library.png" alt="真实资产库界面"></div>
+            <strong>商品、模特和成片统一沉淀</strong>
+            <p>产品图、模特图、生成视频和未完成项目都在资产库里，后续可以继续拿同一套素材做不同脚本。</p>
+          </article>
+          <article class="asset-showcase-card">
+            <div class="real-screen"><img src="assets/real-video-result.png" alt="真实视频结果界面"></div>
+            <strong>结果页直接进入发布准备</strong>
+            <p>成片预览、标题、正文和标签放在一起，确认后就能复制文案继续发布或交给团队复用。</p>
+          </article>
+        </div>
+
+        <div class="asset-benefit-row">
+          <div class="asset-benefit"><strong>素材复用</strong><p>同一商品和模特可以持续测试不同脚本与节奏。</p></div>
+          <div class="asset-benefit"><strong>过程留档</strong><p>草稿、脚本、分镜和结果都能回到对应阶段继续改。</p></div>
+          <div class="asset-benefit"><strong>结果交付</strong><p>视频和发布文案放在同一页，减少来回整理。</p></div>
+        </div>
+
+        <div class="footer"><span>资产沉淀，让同一套素材可以继续复用</span><span>07</span></div>
+      </section>
+
+      <section class="page" data-screen-label="08 Video Cases">
+        <div class="section-head">
+          <div>
+            <span class="badge">案例展示</span>
+            <h2>最后看真实视频，而不只是看流程。</h2>
+          </div>
+        </div>
+
+        <div class="case-video-grid">
+          <article class="case-video-card">
+            <div class="phone-video">
+              <video src="assets/case-video-01.mp4" poster="assets/case-video-01-poster.jpg" controls playsinline preload="metadata"></video>
+              <span class="video-pill">10s</span>
+            </div>
+            <strong>商品种草成片</strong>
+          </article>
+          <article class="case-video-card">
+            <div class="phone-video">
+              <video src="assets/case-video-02.mp4" poster="assets/case-video-02-poster.jpg" controls playsinline preload="metadata"></video>
+              <span class="video-pill">9s</span>
+            </div>
+            <strong>办公室场景短剧</strong>
+          </article>
+          <article class="case-video-card">
+            <div class="phone-video">
+              <video src="assets/case-video-03.mp4" poster="assets/case-video-03-poster.jpg" controls playsinline preload="metadata"></video>
+              <span class="video-pill">19s</span>
+            </div>
+            <strong>剧情带货案例</strong>
+          </article>
+        </div>
+        <div class="footer"><span>货影工坊用户介绍</span><span>08</span></div>
+      </section>
+    </main>
+  </body>
+</html>
